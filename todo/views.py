@@ -5,8 +5,7 @@ from .models import Todo_Item
 def todo_list(request):
     if request.method == 'POST':
         todo = request.POST.get('todo')
-        if todo:
-            Todo_Item.objects.create(todo=todo)
+        Todo_Item.objects.create(todo=todo)
         return redirect('todo:todo_list')
     
     todo = Todo_Item.objects.all()
@@ -17,3 +16,6 @@ def todo_delete(request, todo_id):
     todo = Todo_Item.objects.get(pk=todo_id)
     todo.delete()
     return redirect('todo:todo_list')
+
+
+
