@@ -1,0 +1,26 @@
+services:
+  app:
+    image: jchaelin/todo-app:todo-list
+    ports:
+      - 8000:8000
+    working_dir: /Users/82102/venv/Scripts/todo_project
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - todo-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
+
+volumes:
+  todo-mysql-data:
+
+
